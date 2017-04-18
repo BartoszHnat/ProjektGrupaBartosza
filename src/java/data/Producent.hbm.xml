@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-04-18 21:19:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="data.Producent" table="producent" catalog="sklep" optimistic-lock="version">
+        <id name="idProducenta" type="int">
+            <column name="Id_Producenta" />
+            <generator class="assigned" />
+        </id>
+        <property name="nazwaProducenta" type="string">
+            <column name="Nazwa_Producenta" length="50" not-null="true" />
+        </property>
+        <one-to-one name="produkty" class="data.Produkty"></one-to-one>
+    </class>
+</hibernate-mapping>
