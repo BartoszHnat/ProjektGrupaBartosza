@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-05-06 18:08:39 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="data.Typ" table="typ" catalog="sklep" optimistic-lock="version">
+        <id name="idTyp" type="int">
+            <column name="Id_Typ" />
+            <generator class="assigned" />
+        </id>
+        <property name="nazwaTypu" type="string">
+            <column name="Nazwa_Typu" length="50" not-null="true" />
+        </property>
+        <set name="produkties" table="produkty" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Typ" not-null="true" />
+            </key>
+            <one-to-many class="data.Produkty" />
+        </set>
+    </class>
+</hibernate-mapping>

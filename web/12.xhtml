@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="tanikomp.css" />
+		<meta charset="UTF-8" />
+		<title>TaniKomp.pl - sklep komputerowy</title>
+    </h:head>
+    <h:body>
+		<div id="headx">
+				<div class="cos">
+					<img src="logo.png" class="logo" />
+					<div class="koszyk">
+						<div class="km">
+							<a href="#">Zaloguj się</a>
+							<a href="#">Rejestracja</a>
+						</div>
+							<img src="koszyk.png" class="kimg" />
+					</div>
+					<div class="wyszukiwarka">
+						<form method="GET" action="">
+							<span class="glyphicon glyphicon-search"></span>
+							<input type="text" name="fraza" />
+						</form>
+					</div>
+					
+				</div>
+		</div>
+		<div class="menu">
+			<div class="menu11">
+				<div class="dropdown">
+				  <a class="btn dropdown-toggle" data-toggle="dropdown">Części PC
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="#">Procesory</a></li>
+					<li><a href="#">Płyty główne</a></li>
+					<li><a href="#">Karty graficzne</a></li>
+					<li><a href="#">Pamięć RAM</a></li>
+					<li><a href="#">Karty graficzne</a></li>
+					<li><a href="#">Karty sieciowe</a></li>
+					<li><a href="#">Dyski twarde</a></li>
+				  </ul>
+				</div>
+				  <a class="btn">Peryferia PC</a>
+				  <a class="btn">Sklep Marki</a>
+				  <a class="btn">Akcesoria</a>
+			</div>
+		</div>
+		<div id="tresc">
+			<br /><br />
+			<h1 style="color: white;font-size: 20pt"><center>Witamy w naszym sklepie!</center></h1><br /><br />
+                        
+                          <center><h3> Lista produktów</h3>
+                              <table   cellpadding="1"><ui:repeat value="#{produkty.Produktylist()}" var="l" varStatus="produkt">
+                 <thead>
+                     <tr align="right">
+                         <th> </th>
+                         <th><h4><h:outputText value="#{l.nazwa}" /></h4></th>
+                         <th><h4>cena</h4></th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td><img src="#{l.parametry}" width="50" height="50"/>  </td>
+                       
+                         <td>        <h:outputText value="opis :#{l.nazwa} " /> </td>
+                         <td>   <h:outputText value="#{l.producent}" /></td>
+                             
+                         <td>  <h:outputText value="typ : #{l.typ}" />                                                                                                                             
+                         </td>                                                            
+                         <td align="right">  <h:outputText value="#{l.cena}" /> 
+                              </td>
+                     </tr> </tbody></ui:repeat>
+                      
+                
+             </table></center>
+
+
+		</div>
+		<div id="stopka">
+			<h1><a href="#">Kontakt</a>&nbsp;;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Regulamin</a></h1>
+			<div style="margin-bottom: -20px;">Copyright TaniKomp.pl</div>
+		</div>
+    </h:body>
+</ui:composition>
+

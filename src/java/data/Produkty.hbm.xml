@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-05-06 18:08:39 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="data.Produkty" table="produkty" catalog="sklep" optimistic-lock="version">
+        <id name="idProduktu" type="int">
+            <column name="Id_Produktu" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="producent" class="data.Producent" fetch="select">
+            <column name="Id_Producenta" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typ" class="data.Typ" fetch="select">
+            <column name="Id_Typ" not-null="true" />
+        </many-to-one>
+        <property name="nazwa" type="string">
+            <column name="Nazwa" length="100" not-null="true" />
+        </property>
+        <property name="parametry" type="string">
+            <column name="Parametry" length="500" not-null="true" />
+        </property>
+        <property name="opis" type="string">
+            <column name="Opis" length="350" not-null="true" />
+        </property>
+        <property name="cena" type="int">
+            <column name="Cena" not-null="true" />
+        </property>
+        <set name="zamowienias" table="zamowienia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Produktu" not-null="true" />
+            </key>
+            <one-to-many class="data.Zamowienia" />
+        </set>
+    </class>
+</hibernate-mapping>

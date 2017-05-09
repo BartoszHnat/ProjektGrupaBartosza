@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-05-06 18:08:39 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="data.Zamowienia" table="zamowienia" catalog="sklep" optimistic-lock="version">
+        <id name="idZamowienia" type="int">
+            <column name="Id_Zamowienia" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="produkty" class="data.Produkty" fetch="select">
+            <column name="Id_Produktu" not-null="true" />
+        </many-to-one>
+        <many-to-one name="uzytkownicy" class="data.Uzytkownicy" fetch="select">
+            <column name="Id_Uzytkownika" not-null="true" />
+        </many-to-one>
+        <property name="cena" type="int">
+            <column name="Cena" not-null="true" />
+        </property>
+        <property name="sztuk" type="int">
+            <column name="Sztuk" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
